@@ -257,7 +257,7 @@ pub fn tree() -> Vec<MenuNode> {
     if let Some(edit) = roots.iter_mut().find(|n| n.path == "Edit") {
         let at = edit.children.iter().position(|n| n.path == "Edit > Strip Silence").map_or(edit.children.len(), |i| i + 1);
         let leaf = |label: &str| MenuNode { label: label.into(), path: format!("Edit > Room Tone > {label}"), children: Vec::new() };
-        let children = vec![leaf("Set Room Tone"), leaf("Fill Gaps with Room Tone"), leaf("Clear Room Tone")];
+        let children = vec![leaf("Find Room Tone"), leaf("Set Room Tone"), leaf("Fill Gaps with Room Tone"), leaf("Clear Room Tone")];
         edit.children.insert(at, MenuNode { label: "Room Tone".into(), path: "Edit > Room Tone".into(), children });
     }
     // Not in the incumbent catalog, but the only UI path to an empty MIDI clip (#282).

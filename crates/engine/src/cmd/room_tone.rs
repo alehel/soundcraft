@@ -13,7 +13,7 @@ const SET: &str = "edit.room_tone_set";
 const FILL: &str = "edit.room_tone_fill";
 
 /// The shortest room tone accepted, in seconds: shorter windows tile into a buzz and many clips.
-const MIN_TONE_SECONDS: f64 = 0.1;
+pub(super) const MIN_TONE_SECONDS: f64 = 0.1;
 /// The most clips one fill makes, so a huge range can't flood the playlist.
 const MAX_FILL_CLIPS: usize = 20_000;
 /// The name the fill clips get.
@@ -66,7 +66,7 @@ fn fillable(e: &Engine) -> std::result::Result<(), String> {
     has_range(e)
 }
 
-fn describe(s: &Session, t: RoomTone) -> Value {
+pub(super) fn describe(s: &Session, t: RoomTone) -> Value {
     let name = s.source(t.source).map(|f| f.name.clone());
     json!({"source": t.source.0, "source_name": name, "offset": t.offset, "length": t.length, "gain_db": t.gain_db})
 }

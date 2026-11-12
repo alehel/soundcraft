@@ -110,9 +110,12 @@ fn new_midi_clip_is_in_the_clip_menu() {
 #[test]
 fn room_tone_follows_strip_silence_in_the_edit_menu() {
     let extra = menus::ui_aliases();
-    for (label, id) in
-        [("Set Room Tone", "edit.room_tone_set"), ("Fill Gaps with Room Tone", "edit.room_tone_fill"), ("Clear Room Tone", "edit.room_tone_clear")]
-    {
+    for (label, id) in [
+        ("Find Room Tone", "edit.room_tone_find"),
+        ("Set Room Tone", "edit.room_tone_set"),
+        ("Fill Gaps with Room Tone", "edit.room_tone_fill"),
+        ("Clear Room Tone", "edit.room_tone_clear"),
+    ] {
         assert_eq!(catalog::implemented_by(&format!("Edit > Room Tone > {label}"), &extra).as_deref(), Some(id));
         assert!(menu_commands().contains(id), "{id}");
     }
